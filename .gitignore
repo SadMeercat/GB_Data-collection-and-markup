@@ -2,3 +2,4 @@ venv/
 *.png
 .vscode/
 __pycache__/
+*.csv
