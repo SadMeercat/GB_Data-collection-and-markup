@@ -23,13 +23,7 @@ class UnsplashSpider(scrapy.Spider):
         photos = response.css('a[itemprop="contentUrl"]::attr(href)').getall()  # Проверьте актуальный селектор на сайте
         for photo in photos:
             yield scrapy.Request(url=response.urljoin(photo), callback=self.parse_photo)
-
-        # # Переход на следующую страницу категории
-        # next_page = response.css('a[data-test="pagination-next-page"]::attr(href)').get()
-        # if next_page:
-        #     yield scrapy.Request(url=response.urljoin(next_page), callback=self.parse_category)
-
-
+            
     def parse_photo(self, response):
         # Извлечение информации о фотографии
         item = UnsplashscraperItem()
